@@ -1,27 +1,75 @@
-# TodoApp
+# Todo App with Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.1.
+## Description
 
-## Development server
+**TodoApp** is a task management application that allows users to record, filter and update the status of their daily tasks. The app includes simple validations to prevent empty data entry and provides an intuitive interface for task management. Tasks are stored in the browser's Local Storage, ensuring that they are maintained between sessions.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Characteristics
 
-## Code scaffolding
+- **Task Registration**: Allows you to add new tasks with their respective status.
+- **Validation**: Checks that no empty data is entered when creating a task.
+- **Filtered by Status**: Option to show all tasks or filter based on their status.
+- **Status Change**: Facilitates updating the status of an existing task.
+- **Data Persistence**: Tasks are saved in Local Storage, keeping them available between sessions.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Demo
 
-## Build
+![Form](/public/assets/images/form.jpg)
+![Demo](/public/assets/images/demo.jpg)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🛠 Skills
 
-## Running unit tests
+- **Angular**: Versión 18
+- **SCSS**: For the design and styles of the application
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installation
 
-## Running end-to-end tests
+To run the application locally, follow these steps
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the repository:
 
-## Further help
+```bash
+git clone https://github.com/puriihuaman/todoApp
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+2. Navigate to the project directory:
+
+```bash
+cd todoApp
+```
+
+3. Install the dependencies:
+
+```bash
+npm install
+```
+
+4. Start the development server:
+
+```bash
+ng serve
+```
+
+5. Open your browser and go to http://localhost:4200.
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your environment folder
+
+`STORAGE_NAME`
+
+## Use
+
+- Add a Task: Enter the task text and click "Add."
+- Filter Tasks: Use the filter menu to view tasks by status.
+- Update Status: Click on a task to change its status between "Pending", "In-Progress", and "Completed".
+
+## Contributing
+
+Contributions are always welcome!
+
+If you want to collaborate, please open an issue or send a pull request.
+
+## Contact
+
+For more information, you can contact us through https://www.linkedin.com/in/puriihuaman/.

@@ -31,18 +31,15 @@ export class TodoFormComponent {
 			: (this.hasError = false);
 
 		if (!this.hasError) {
-			console.log("Hay datos");
 			const newTodo: Todo = {
 				id: crypto.randomUUID(),
 				description: this.newDescription,
 				status: this.newStatus.value,
 				createdAt: new Date(),
 			};
-			console.log(newTodo);
-			// this.todosService.addTodo(newTodo);
+			this.todosService.addTodo(newTodo);
 		} else {
 			this.message = "Hay campos vacíos";
-			console.log("hay campos vacíos");
 		}
 
 		this.newDescription = "";
