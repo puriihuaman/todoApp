@@ -1,0 +1,12 @@
+.main {
+	max-width: var(--sizes-3xl);
+	height: 100vh;
+	margin-left: auto;
+	margin-right: auto;
+	min-width: var(--sizes-80);
+}
+
+.content {
+	padding: var(--space-4);
+	height: 100%;
+}

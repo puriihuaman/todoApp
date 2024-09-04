@@ -1,1 +1,20 @@
-<p>dropdown works!</p>
+<div class="dropdown">
+	<button type="button" class="dropdown-content" (click)="toggleDropdown()">
+		@if (optionSelected?.name) {
+		<span>{{ optionSelected?.name }}</span>
+		} @else {
+		<span>{{ placeholder }}</span>
+		}
+		<span>{{ !open ? "➕" : "➖" }}</span>
+	</button>
+
+	@if (open) {
+	<ul class="dropdown-option">
+		@for (option of options; track $index) {
+		<li class="dropdown-item" (click)="selectOption(option)">
+			<span>{{ option.name }}</span>
+		</li>
+		}
+	</ul>
+	}
+</div>

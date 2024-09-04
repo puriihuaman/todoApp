@@ -1,0 +1,30 @@
+<form action="#" class="form" (ngSubmit)="addTodo()">
+	<fieldset class="form-fieldset">
+		<legend class="form-legend">Nueva tarea</legend>
+
+		<div class="form-group">
+			<label for="description" class="form-label">Descrición</label>
+			<input
+				type="text"
+				name="description"
+				id="description"
+				class="form-input"
+				[(ngModel)]="newDescription"
+				placeholder="Escribe la tarea..."
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="status" class="form-label">Estado</label>
+			<!-- dropdown -->
+			<app-dropdown
+				[optionSelected]="newStatus"
+				(onSelectEmitt)="changeStatus($event)"
+			/>
+		</div>
+
+		<div class="form-group">
+			<button type="submit" class="button form-button">Agregar</button>
+		</div>
+	</fieldset>
+</form>

@@ -1,18 +1,17 @@
 @if (todo) {
 <div class="todo">
-  <div class="todo-top">
-    <p class="todo-date">{{ todo.createdAt | date : "short" }}</p>
+	<div class="todo-top">
+		<p class="todo-date">{{ todo.createdAt | date : "short" }}</p>
 
-    <select name="status" id="status">
-      <option value="empty" selected>Empty</option>
-      <option value="in-progress">In progress</option>
-    </select>
+		<button class="button cancel" (click)="removeTodo()">❌</button>
+	</div>
 
-    <button class="button cancel" (click)="removeTodo()">❌</button>
-  </div>
-
-  <div class="todo-bottom">
-    <p class="todo-description">{{ todo.description }}!</p>
-  </div>
+	<div class="todo-bottom">
+		<p class="todo-description">{{ todo.description }}!</p>
+		<app-dropdown
+			[optionSelected]="optionSelected"
+			(onSelectEmitt)="changeStatus($event)"
+		/>
+	</div>
 </div>
 }

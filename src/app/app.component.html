@@ -1,9 +1,13 @@
 <main class="main">
-  <div class="content">
-    @if (todos$ | async;as todos) {
-    <app-todo-list [todoList]="todos" />
-    } @else {
-    <div>No hay tareas</div>
-    }
-  </div>
+	<div class="content">
+		<div>
+			<app-todo-form />
+		</div>
+
+		@if (todos$ | async; as todos) {
+		<app-todo-list [todoList]="todos" />
+		} @else {
+		<div>No hay tareas</div>
+		}
+	</div>
 </main>

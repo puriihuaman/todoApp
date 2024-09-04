@@ -1,18 +1,23 @@
 import { Injectable } from "@angular/core";
-import type { Todo } from "@interfaces/todo";
+import type { Todo, TodoStatus } from "@interfaces/todo";
 import { BehaviorSubject, type Observable } from "rxjs";
 
 @Injectable({
 	providedIn: "root",
 })
 export class TodosService {
-	private todos: Todo[] = initialTodos;
+	private storageName: string = "TODOS";
+	private todos: Todo[] = [];
 	private todosSubject: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>(
 		this.todos
 	);
 
 	constructor() {
 		this.loadFromStorage();
+	}
+
+	public allTodos(): Observable<Todo[]> {
+		return this.todosSubject.asObservable();
 	}
 
 	public addTodo(todo: Todo): void {
@@ -25,14 +30,19 @@ export class TodosService {
 		this.update();
 	}
 
-	public allTodos(): Observable<Todo[]> {
-		return this.todosSubject.asObservable();
+	public changeTodoStatus(todoId: Todo["id"], newStatus: TodoStatus) {
+		const todoIndex = this.todos.findIndex(
+			(todo: Todo): boolean => todo.id === todoId
+		);
+		if (todoIndex === -1) return;
+		this.todos[todoIndex].status = newStatus;
+		this.update();
 	}
 
 	private loadFromStorage(): void {
-		const storedTodos: string | null = localStorage.getItem("TODOS");
+		const storedTodos: string | null = localStorage.getItem(this.storageName);
 		if (storedTodos) this.todos = JSON.parse(storedTodos);
-		else this.todos = initialTodos;
+		else this.todos = [];
 	}
 
 	private update(): void {
@@ -41,27 +51,6 @@ export class TodosService {
 	}
 
 	private upgradeStorage(): void {
-		localStorage.setItem("TODOS", JSON.stringify(this.todos));
+		localStorage.setItem(this.storageName, JSON.stringify(this.todos));
 	}
 }
-
-const initialTodos: Todo[] = [
-	{
-		id: crypto.randomUUID(),
-		description: "Tarea 1",
-		status: "in-progress",
-		createdAt: new Date(),
-	},
-	{
-		id: crypto.randomUUID(),
-		description: "Tarea 2",
-		status: "empty",
-		createdAt: new Date(),
-	},
-	{
-		id: crypto.randomUUID(),
-		description: "Tarea 3",
-		status: "finished",
-		createdAt: new Date(),
-	},
-];

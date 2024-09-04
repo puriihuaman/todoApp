@@ -1,0 +1,7 @@
+.todos {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--space-4);
+	min-height: 75vh;
+	overflow-y: auto;
+}

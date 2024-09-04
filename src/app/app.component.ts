@@ -4,11 +4,12 @@ import type { Todo } from "@interfaces/todo";
 import { TodoListComponent } from "./components/todo-list/todo-list.component";
 import { TodosService } from "@services/todos.service";
 import type { Observable } from "rxjs";
+import { TodoFormComponent } from "./components/todo-form/todo-form.component";
 
 @Component({
 	selector: "app-root",
 	standalone: true,
-	imports: [AsyncPipe, JsonPipe, TodoListComponent],
+	imports: [AsyncPipe, JsonPipe, TodoListComponent, TodoFormComponent],
 	templateUrl: "./app.component.html",
 	styleUrl: "./app.component.scss",
 })

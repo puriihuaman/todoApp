@@ -1,0 +1,42 @@
+.form {
+	background: var(--mirage-900);
+	margin-bottom: var(--space-4);
+	padding: var(--space-4);
+}
+.form-fieldset {
+	@media (width >= 768px) {
+		display: flex;
+	}
+}
+.form-legend {
+	font-size: var(--fontSizes-2xl);
+	font-family: var(--heading-font);
+}
+.form-group {
+	flex: 1;
+	padding: var(--space-3) 0;
+}
+.form-label {
+	margin-bottom: var(--space-2);
+}
+.form-input {
+	background: var(--mirage-950);
+	width: var(--sizes-full);
+	padding: var(--space-3) var(--space-4);
+	border-radius: var(--radii-lg);
+	border: 1px solid var(--mirage-900);
+	&:active,
+	&:focus {
+		border-color: var(--biloba-flower-500);
+	}
+}
+
+.form-button {
+	background: var(--biloba-flower-500);
+	padding: var(--space-3) var(--space-4);
+	border-radius: var(--radii-lg);
+	border-color: var(--biloba-flower-500);
+	&:hover {
+		background-color: var(--biloba-flower-600);
+	}
+}
