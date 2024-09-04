@@ -1,7 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { DropdownComponent } from "@components/dropdown/dropdown.component";
-import { filterOptions, options } from "@config/options";
+import { options } from "@config/options";
 import type { Option } from "@interfaces/option";
 import type { FilterStatus, Todo, TodoStatus } from "@interfaces/todo";
 import { TodosService } from "@services/todos.service";
@@ -16,10 +16,10 @@ import { TodosService } from "@services/todos.service";
 export class TodoFormComponent {
 	private todosService: TodosService = inject(TodosService);
 
+	public options: Option<TodoStatus>[] = options;
 	public newDescription: string = "";
-	public newStatus: Option<string, TodoStatus> = options[0];
-	public statusOptions: { name: string; value: TodoStatus | FilterStatus }[] =
-		filterOptions;
+	public newStatus: Option<TodoStatus | FilterStatus> = options[0];
+	public statusOptions: Option<TodoStatus>[] = options;
 	public hasError: boolean = false;
 	public message: string = "";
 
@@ -32,7 +32,7 @@ export class TodoFormComponent {
 
 		if (!this.hasError) {
 			console.log("Hay datos");
-			const newTodo: Todo<TodoStatus> = {
+			const newTodo: Todo = {
 				id: crypto.randomUUID(),
 				description: this.newDescription,
 				status: this.newStatus.value,
@@ -49,7 +49,7 @@ export class TodoFormComponent {
 		this.newStatus = options[0];
 	}
 
-	changeStatus(newStatus: Option<string, TodoStatus>): void {
+	changeStatus(newStatus: Option<TodoStatus | FilterStatus>): void {
 		this.newStatus = newStatus;
 	}
 }

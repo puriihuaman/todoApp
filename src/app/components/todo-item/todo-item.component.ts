@@ -1,6 +1,8 @@
 import { DatePipe } from "@angular/common";
 import { Component, inject, Input } from "@angular/core";
 import { DropdownComponent } from "@components/dropdown/dropdown.component";
+import { options } from "@config/options";
+import type { Option } from "@interfaces/option";
 import type { FilterStatus, Todo, TodoStatus } from "@interfaces/todo";
 import { traductions } from "@lang/traductions";
 import { TodosService } from "@services/todos.service";
@@ -14,10 +16,11 @@ import { TodosService } from "@services/todos.service";
 })
 export class TodoItemComponent {
 	@Input() todo!: Todo;
+	public options: Option<TodoStatus>[] = options;
 
 	private todosService: TodosService = inject(TodosService);
 
-	get optionSelected() {
+	get optionSelected(): Option<FilterStatus> {
 		return { name: traductions[this.todo.status], value: this.todo.status };
 	}
 
@@ -26,10 +29,7 @@ export class TodoItemComponent {
 		this.todosService.removeTodo(this.todo.id);
 	}
 
-	changeStatus(newStatus: {
-		name: string;
-		value: TodoStatus | FilterStatus;
-	}): void {
+	changeStatus(newStatus: Option<TodoStatus | FilterStatus>): void {
 		if (this.todo.id) {
 			this.todosService.changeTodoStatus(this.todo.id, newStatus.value);
 		}

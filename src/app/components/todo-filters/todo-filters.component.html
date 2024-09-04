@@ -1,6 +1,7 @@
-<div>
+<div class="filtered">
 	<label for="">Filtrar por estado</label>
 	<app-dropdown
+		[options]="options"
 		[optionSelected]="selectedStatus"
 		(onSelectEmitt)="filterByStatus($event)"
 	/>

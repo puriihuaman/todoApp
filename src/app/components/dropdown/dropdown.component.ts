@@ -13,12 +13,10 @@ import type { FilterStatus, TodoStatus } from "@interfaces/todo";
 })
 export class DropdownComponent {
 	@Input() placeholder?: string;
-	// public options: { name: string; value: TodoStatus }[] = options;
-	@Input() options: Option<string, TodoStatus | FilterStatus>[] = [];
-	@Input() optionSelected?: Option<string, TodoStatus | FilterStatus>;
-	@Output() onSelectEmitt: EventEmitter<
-		Option<string, TodoStatus | FilterStatus>
-	> = new EventEmitter<Option<string, TodoStatus | FilterStatus>>();
+	@Input() options!: Option<TodoStatus | FilterStatus>[];
+	@Input() optionSelected?: Option<TodoStatus | FilterStatus>;
+	@Output() onSelectEmitt: EventEmitter<Option<TodoStatus | FilterStatus>> =
+		new EventEmitter<Option<TodoStatus | FilterStatus>>();
 
 	public open: boolean = false;
 
@@ -26,7 +24,7 @@ export class DropdownComponent {
 		this.open = !this.open;
 	}
 
-	public selectOption(option: Option<string, TodoStatus | FilterStatus>): void {
+	public selectOption(option: Option<TodoStatus | FilterStatus>): void {
 		this.onSelectEmitt.emit(option);
 		this.open = false;
 	}

@@ -1,17 +1,7 @@
-/**
- * 
 export interface Todo {
 	id: string;
 	description: string;
 	status: TodoStatus | FilterStatus;
-	createdAt: string | Date;
-}
- */
-
-export interface Todo<T> {
-	id: string;
-	description: string;
-	status: T;
 	createdAt: string | Date;
 }
 

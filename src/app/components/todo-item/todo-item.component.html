@@ -9,6 +9,7 @@
 	<div class="todo-bottom">
 		<p class="todo-description">{{ todo.description }}!</p>
 		<app-dropdown
+			[options]="options"
 			[optionSelected]="optionSelected"
 			(onSelectEmitt)="changeStatus($event)"
 		/>

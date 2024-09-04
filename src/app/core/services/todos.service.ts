@@ -8,9 +8,10 @@ import { BehaviorSubject, type Observable } from "rxjs";
 })
 export class TodosService {
 	private storageName: string = environment.storageName;
-	private todos: Todo<FilterStatus>[] = [];
-	private todosSubject: BehaviorSubject<Todo<FilterStatus>[]> =
-		new BehaviorSubject<Todo<FilterStatus>[]>(this.todos);
+	private todos: Todo[] = [];
+	private todosSubject: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>(
+		this.todos
+	);
 	private filterSubject: BehaviorSubject<FilterStatus> =
 		new BehaviorSubject<FilterStatus>("all");
 
@@ -19,32 +20,35 @@ export class TodosService {
 		this.setupFiltering();
 	}
 
-	public allTodos(): Observable<Todo<FilterStatus>[]> {
+	public allTodos(): Observable<Todo[]> {
 		return this.todosSubject.asObservable();
 	}
 
-	public addTodo(todo: Todo<TodoStatus>): void {
+	public addTodo(todo: Todo): void {
 		this.todos.push(todo);
 		this.update();
 	}
 
-	public removeTodo(todoId: Todo<FilterStatus>["id"]): void {
-		this.todos = this.todos.filter(
-			(todo: Todo<FilterStatus>): boolean => todo.id !== todoId
-		);
+	public removeTodo(todoId: Todo["id"]): void {
+		this.todos = this.todos.filter((todo: Todo): boolean => todo.id !== todoId);
 		this.update();
 	}
 
 	public changeTodoStatus(
-		todoId: Todo<TodoStatus>["id"],
+		todoId: Todo["id"],
 		newStatus: TodoStatus | FilterStatus
 	): void {
 		const todoIndex = this.todos.findIndex(
-			(todo: Todo<FilterStatus>): boolean => todo.id === todoId
+			(todo: Todo): boolean => todo.id === todoId
 		);
 		if (todoIndex === -1) return;
 		this.todos[todoIndex].status = newStatus;
 		this.update();
+	}
+
+	public filterByStatus(status: FilterStatus): Observable<Todo[]> {
+		this.filterSubject.next(status);
+		return this.todosSubject.asObservable();
 	}
 
 	private loadFromStorage(): void {
@@ -64,12 +68,10 @@ export class TodosService {
 
 	private setupFiltering(): void {
 		this.filterSubject.subscribe((status: FilterStatus): void => {
-			const filteredTodos: Todo<FilterStatus>[] =
+			const filteredTodos: Todo[] =
 				status === "all"
 					? this.todos
-					: this.todos.filter(
-							(todo: Todo<FilterStatus>): boolean => todo.status === status
-					  );
+					: this.todos.filter((todo: Todo): boolean => todo.status === status);
 			this.todosSubject.next(filteredTodos);
 		});
 	}

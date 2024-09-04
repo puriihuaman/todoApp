@@ -21,7 +21,7 @@ import { TodoFiltersComponent } from "@components/todo-filters/todo-filters.comp
 	styleUrl: "./app.component.scss",
 })
 export class AppComponent implements OnInit {
-	public todos$!: Observable<Todo<FilterStatus>[]>;
+	public todos$!: Observable<Todo[]>;
 	private todosService: TodosService = inject(TodosService);
 
 	ngOnInit(): void {

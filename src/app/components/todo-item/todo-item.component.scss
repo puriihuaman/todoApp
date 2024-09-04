@@ -1,5 +1,5 @@
 .todo {
-	background: var(--mirage-900);
+	background: var(--gray-900);
 	padding: var(--space-4);
 	border-radius: var(--radii-lg);
 	box-shadow: var(--shadow);
@@ -15,7 +15,7 @@
 }
 
 .todo-date {
-	color: var(--mirage-300);
+	color: var(--gray-300);
 }
 
 .todo-bottom {
@@ -29,7 +29,7 @@
 
 .pay {
 	background-color: var(--persian-blue-500);
-	color: var(--mirage-50);
+	color: var(--gray-50);
 	border-color: var(--persian-blue-500);
 	&:hover {
 		background-color: var(--persian-blue-600);

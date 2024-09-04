@@ -18,8 +18,8 @@
 
 		<div class="form-group">
 			<label for="status" class="form-label">Estado</label>
-			<!-- dropdown -->
 			<app-dropdown
+				[options]="options"
 				[optionSelected]="newStatus"
 				(onSelectEmitt)="changeStatus($event)"
 			/>

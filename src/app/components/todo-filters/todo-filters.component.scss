@@ -1,0 +1,9 @@
+.filtered {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--space-4);
+	background: var(--gray-900);
+	box-shadow: var(--shadow);
+	border-radius: var(--radii-md);
+}
