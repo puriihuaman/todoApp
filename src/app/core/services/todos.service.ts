@@ -1,19 +1,23 @@
 import { Injectable } from "@angular/core";
-import type { Todo, TodoStatus } from "@interfaces/todo";
+import { environment } from "@env/environment.development";
+import type { FilterStatus, Todo, TodoStatus } from "@interfaces/todo";
 import { BehaviorSubject, type Observable } from "rxjs";
 
 @Injectable({
 	providedIn: "root",
 })
 export class TodosService {
-	private storageName: string = "TODOS";
+	private storageName: string = environment.storageName;
 	private todos: Todo[] = [];
 	private todosSubject: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>(
 		this.todos
 	);
+	private filterSubject: BehaviorSubject<FilterStatus> =
+		new BehaviorSubject<FilterStatus>("all");
 
 	constructor() {
 		this.loadFromStorage();
+		this.setupFiltering();
 	}
 
 	public allTodos(): Observable<Todo[]> {
@@ -30,7 +34,7 @@ export class TodosService {
 		this.update();
 	}
 
-	public changeTodoStatus(todoId: Todo["id"], newStatus: TodoStatus) {
+	public changeTodoStatus(todoId: Todo["id"], newStatus: TodoStatus): void {
 		const todoIndex = this.todos.findIndex(
 			(todo: Todo): boolean => todo.id === todoId
 		);
@@ -52,5 +56,15 @@ export class TodosService {
 
 	private upgradeStorage(): void {
 		localStorage.setItem(this.storageName, JSON.stringify(this.todos));
+	}
+
+	private setupFiltering(): void {
+		this.filterSubject.subscribe((status: FilterStatus): void => {
+			const filteredTodos: Todo[] =
+				status === "all"
+					? this.todos
+					: this.todos.filter((todo: Todo): boolean => todo.status === status);
+			this.todosSubject.next(filteredTodos);
+		});
 	}
 }

@@ -19,6 +19,8 @@ export class TodoFormComponent {
 	public newStatus: { name: string; value: TodoStatus } = options[0];
 	public statusOptions: { name: string; value: TodoStatus }[] = options;
 
+	constructor() {}
+
 	public addTodo(): void {
 		const newTodo: Todo = {
 			id: crypto.randomUUID(),

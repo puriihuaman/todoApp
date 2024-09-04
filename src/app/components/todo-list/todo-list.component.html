@@ -1,4 +1,7 @@
 <section class="todos">
-	@for (todo of todoList; track todo.id) { <app-todo-item [todo]="todo" />
+	@if (todoList.length > 0) { @for (todo of todoList; track todo.id) {
+	<app-todo-item [todo]="todo" />
+	} } @else {
+	<div>No hay tareas...</div>
 	}
 </section>

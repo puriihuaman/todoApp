@@ -5,4 +5,6 @@ export interface Todo {
 	createdAt: string | Date;
 }
 
-export type TodoStatus = "empty" | "in-progress" | "finished";
+export type TodoStatus = "pending" | "in-progress" | "finished";
+
+export type FilterStatus = TodoStatus | "all";

@@ -6,6 +6,8 @@
 .form-fieldset {
 	@media (width >= 768px) {
 		display: flex;
+		align-items: flex-end;
+		column-gap: var(--space-4);
 	}
 }
 .form-legend {

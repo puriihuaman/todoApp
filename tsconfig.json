@@ -24,7 +24,8 @@
 			"@components/*": ["./src/app/components/*"],
 			"@services/*": ["./src/app/core/services/*"],
 			"@config/*": ["./src/app/core/config/*"],
-			"@lang/*": ["./src/app/core/lang/*"]
+			"@lang/*": ["./src/app/core/lang/*"],
+			"@env/*": ["./src/environments/*"]
 		}
 	},
 	"angularCompilerOptions": {

@@ -1,6 +1,6 @@
 export const traductions = {
 	all: "Todas",
-	empty: "Por empezar",
+	pending: "Pendiente",
 	"in-progress": "En progreso",
-	finished: "Terminadas",
+	finished: "Terminada(s)",
 };
