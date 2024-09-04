@@ -1,7 +1,7 @@
 import { DatePipe } from "@angular/common";
 import { Component, inject, Input } from "@angular/core";
 import { DropdownComponent } from "@components/dropdown/dropdown.component";
-import type { Todo, TodoStatus } from "@interfaces/todo";
+import type { FilterStatus, Todo, TodoStatus } from "@interfaces/todo";
 import { traductions } from "@lang/traductions";
 import { TodosService } from "@services/todos.service";
 
@@ -26,7 +26,10 @@ export class TodoItemComponent {
 		this.todosService.removeTodo(this.todo.id);
 	}
 
-	changeStatus(newStatus: { name: string; value: TodoStatus }): void {
+	changeStatus(newStatus: {
+		name: string;
+		value: TodoStatus | FilterStatus;
+	}): void {
 		if (this.todo.id) {
 			this.todosService.changeTodoStatus(this.todo.id, newStatus.value);
 		}

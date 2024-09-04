@@ -1,12 +1,15 @@
 .main {
-	max-width: var(--sizes-3xl);
 	height: 100vh;
 	margin-left: auto;
 	margin-right: auto;
+	max-width: var(--sizes-3xl);
 	min-width: var(--sizes-80);
 }
 
 .content {
+	display: grid;
+	grid-template-rows: auto 1fr;
 	padding: var(--space-4);
-	height: 100%;
+	height: inherit;
+	overflow: hidden;
 }

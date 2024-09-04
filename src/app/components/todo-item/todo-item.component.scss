@@ -3,13 +3,14 @@
 	padding: var(--space-4);
 	border-radius: var(--radii-lg);
 	box-shadow: var(--shadow);
+	margin-bottom: var(--space-4);
 }
 
 .todo-top {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: var(--space-2);
+	margin-bottom: var(--space-3);
 	font-size: var(--fontSizes-sm);
 }
 
@@ -26,36 +27,6 @@
 	font-size: var(--fontSizes-xl);
 }
 
-.button {
-	position: relative;
-	overflow: hidden;
-	padding: var(--space-2) var(--space-4);
-	border-radius: var(--radii-lg);
-	cursor: pointer;
-	border: 1px solid currentColor;
-	transition: var(--transition-property-common),
-		var(--transition-easing-ease-in-out), var(--transition-duration-300);
-
-	&::after {
-		content: "";
-		display: block;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		z-index: var(--zIndices-docked);
-		width: var(--size);
-		height: var(--size);
-		border-radius: var(--radii-full);
-		background-color: var(--mirage-50);
-		opacity: 0.2;
-		transform: translate(-50%, -50%);
-	}
-	&:active::after {
-		animation: button-scale 300ms linear;
-		transform-origin: center;
-	}
-}
-
 .pay {
 	background-color: var(--persian-blue-500);
 	color: var(--mirage-50);
@@ -65,22 +36,12 @@
 	}
 }
 
-.cancel {
+.delete {
 	color: var(--red-500);
 	background-color: transparent;
+	padding: var(--space-1);
 	&:hover {
 		color: var(--red-300);
 		background-color: var(--red-900);
-	}
-}
-
-@keyframes button-scale {
-	from {
-		width: 0;
-		height: 0;
-	}
-	to {
-		width: 200px;
-		height: 200px;
 	}
 }

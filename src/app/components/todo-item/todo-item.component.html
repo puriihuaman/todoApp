@@ -3,7 +3,7 @@
 	<div class="todo-top">
 		<p class="todo-date">{{ todo.createdAt | date : "short" }}</p>
 
-		<button class="button cancel" (click)="removeTodo()">❌</button>
+		<button class="button delete" (click)="removeTodo()">❌</button>
 	</div>
 
 	<div class="todo-bottom">

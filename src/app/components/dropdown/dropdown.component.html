@@ -8,13 +8,11 @@
 		<span>{{ !open ? "➕" : "➖" }}</span>
 	</button>
 
-	@if (open) {
-	<ul class="dropdown-option">
+	<ul [ngClass]="{ 'dropdown-option': true, 'dropdown-open': open }">
 		@for (option of options; track $index) {
 		<li class="dropdown-item" (click)="selectOption(option)">
 			<span>{{ option.name }}</span>
 		</li>
 		}
 	</ul>
-	}
 </div>

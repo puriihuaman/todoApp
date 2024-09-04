@@ -2,6 +2,10 @@
 	background: var(--mirage-900);
 	margin-bottom: var(--space-4);
 	padding: var(--space-4);
+
+	@media (width >= 768px) {
+		padding: var(--space-6);
+	}
 }
 .form-fieldset {
 	@media (width >= 768px) {
@@ -11,12 +15,16 @@
 	}
 }
 .form-legend {
+	text-align: center;
 	font-size: var(--fontSizes-2xl);
 	font-family: var(--heading-font);
 }
 .form-group {
 	flex: 1;
-	padding: var(--space-3) 0;
+	padding: var(--space-2) 0;
+}
+.form-group-button {
+	flex: 0;
 }
 .form-label {
 	margin-bottom: var(--space-2);
@@ -34,11 +42,23 @@
 }
 
 .form-button {
-	background: var(--biloba-flower-500);
 	padding: var(--space-3) var(--space-4);
+	margin-left: auto;
+	margin-right: auto;
+	background: var(--biloba-flower-500);
 	border-radius: var(--radii-lg);
 	border-color: var(--biloba-flower-500);
 	&:hover {
 		background-color: var(--biloba-flower-600);
 	}
+	&:disabled {
+		opacity: 0.5;
+	}
+}
+
+.message {
+	color: var(--red-500);
+	text-align: center;
+	margin-bottom: var(--space-2);
+	font-size: var(--fontSizes-sm);
 }

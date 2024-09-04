@@ -4,6 +4,10 @@
 			<app-todo-form />
 		</div>
 
+		<div>
+			<app-todo-filters />
+		</div>
+
 		@if (todos$ | async; as todos) {
 		<app-todo-list [todoList]="todos" />
 		} @else {
