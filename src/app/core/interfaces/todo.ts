@@ -8,9 +8,3 @@ export interface Todo {
 export type TodoStatus = "pending" | "in-progress" | "finished";
 
 export type FilterStatus = TodoStatus | "all";
-
-// enum TodoStatus {
-// 	Pending = 'Pending',
-// 	Completed = 'Completed',
-// 	InProgress = 'InProgress'
-// }
