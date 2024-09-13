@@ -30,7 +30,7 @@ describe("TodosService", () => {
 		expect(service).toBeTruthy();
 	});
 
-	it("#addTodo should create a new everything", () => {
+	it("#addTodo should create a new Todo", () => {
 		const newTodo: Todo = {
 			id: "003",
 			description: "Test Todo",
